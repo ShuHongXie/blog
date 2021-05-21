@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-20 10:33:24
  * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-20 17:52:42
+ * @LastEditTime: 2021-05-21 10:25:16
  * @FilePath: /nuxt-blog/nuxt.config.js
  */
 export default {
@@ -14,11 +14,17 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href: '//at.alicdn.com/t/font_1096478_kp3hdrsolo.css',
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['~/assets/scss/common.scss'],
+  css: ['@/assets/common/reset.scss', '@/assets/common/common.scss'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],

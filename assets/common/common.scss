@@ -1,0 +1,33 @@
+@charset 'utf-8';
+
+$base_color: #cf81bf;
+$border_color: #cf98c4;
+$other_color: #8f7dcd;
+$page_link_color: #99a9bf;
+
+// 清除浮动
+.cf:after {
+  display: block;
+  clear: both;
+  content: '';
+  visibility: hidden;
+  height: 0;
+}
+.cf {
+  zoom: 1;
+}
+
+@font-face {
+  font-family: 'iconfont'; /* project id 1096478 */
+  src: url('//at.alicdn.com/t/font_1096478_kp3hdrsolo.eot');
+  src: url('//at.alicdn.com/t/font_1096478_kp3hdrsolo.eot?#iefix')
+      format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1096478_kp3hdrsolo.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1096478_kp3hdrsolo.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1096478_kp3hdrsolo.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1096478_kp3hdrsolo.svg#iconfont') format('svg');
+}
+
+body {
+  background-color: #000;
+}

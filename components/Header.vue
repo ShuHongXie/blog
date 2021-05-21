@@ -2,12 +2,12 @@
  * @Author: shuhongxie
  * @Date: 2021-05-20 17:23:24
  * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-20 17:57:20
+ * @LastEditTime: 2021-05-21 10:14:10
  * @FilePath: /nuxt-blog/components/Header.vue
 -->
 <template>
-  <header id="header" :class="[cf, inTop ? 'top' : 'not-top']">
-    <a class="header-title" href="/">谢小谢のBlog</a>
+  <header id="header" :class="['cf', inTop ? 'top' : 'not--top']">
+    <a class="header--title" href="/">谢小谢のBlog</a>
     <div :class="showNav ? 'nav show' : 'nav noshow'">
       <nuxt-link
         v-for="(item, index) in navList"
@@ -21,7 +21,7 @@
     </div>
     <i
       data-current="1"
-      class="iconfont iconlist list_icon"
+      class="iconfont iconlist list--icon"
       @click="handleNav"
     ></i>
   </header>
@@ -80,7 +80,7 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-// @import '~/assets/scss/common.scss';
+@import '~/assets/common/common.scss';
 header {
   width: 100%;
   position: absolute;
@@ -92,12 +92,12 @@ header {
   & > a {
     font-size: 18px;
   }
-  & > .header_title {
+  & > .header--title {
     &:hover {
       color: $base_color;
     }
   }
-  & > .list_icon {
+  & > .list--icon {
     float: right;
     font-size: 26px;
   }
@@ -120,7 +120,7 @@ header {
 
 @media screen and (max-width: 768px) {
   header {
-    & > .header_title {
+    & > .header--title {
       color: #000;
     }
     &.top {
@@ -143,14 +143,14 @@ header {
           color: #000;
         }
       }
-      & > .header_title {
+      & > .header--title {
         color: #eee;
         &:hover {
           color: #fff;
         }
       }
     }
-    &.no_top {
+    &.no--top {
       position: fixed;
       & > .nav {
         opacity: 0;
@@ -169,7 +169,7 @@ header {
           }
         }
       }
-      .list_icon {
+      .list--icon {
         color: #000;
         &:hover {
           color: $base_color;
@@ -202,7 +202,7 @@ header {
         transform: translateY(0);
       }
     }
-    .list_icon {
+    .list--icon {
       color: #eee;
       &:hover {
         color: #fff;
@@ -230,7 +230,7 @@ header {
       }
       background-color: none;
     }
-    &.no_top {
+    &.no--top {
       position: fixed;
       a {
         color: #000 !important;
@@ -253,7 +253,7 @@ header {
         }
       }
     }
-    .list_icon {
+    .list--icon {
       display: none;
     }
   }
