@@ -8,3 +8,7 @@ You can directly use them in pages and other components without the need to impo
 
 - `<Header>` | `<header>` (components/Header.vue)
 - `<Logo>` | `<logo>` (components/Logo.vue)
+- `<Scissors>` | `<scissors>` (components/Scissors.vue)
+- `<Sidebar>` | `<sidebar>` (components/Sidebar.vue)
+- `<SidebarControl>` | `<sidebar-control>` (components/SidebarControl.vue)
+- `<ToTop>` | `<to-top>` (components/ToTop.vue)

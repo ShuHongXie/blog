@@ -1,7 +1,7 @@
-# COMPONENTS
-
-**This directory is not required, you can delete it if you don't want to use it.**
-
-The components directory contains your Vue.js Components.
-
-_Nuxt.js doesn't supercharge these components._
+<!--
+ * @Author: shuhongxie
+ * @Date: 2021-05-21 09:30:59
+ * @LastEditors: shuhongxie
+ * @LastEditTime: 2021-05-21 16:55:16
+ * @FilePath: /nuxt-blog/components/README.md
+-->

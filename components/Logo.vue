@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-20 10:33:24
  * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-20 16:24:46
+ * @LastEditTime: 2021-05-21 17:21:35
  * @FilePath: /nuxt-blog/components/Logo.vue
 -->
 <template>
@@ -29,14 +29,14 @@
 </template>
 
 <style>
-.NuxtLogo {
-  animation: 1s appear;
-  margin: auto;
-}
-
-@keyframes appear {
-  0% {
-    opacity: 0;
+  .NuxtLogo {
+    animation: 1s appear;
+    margin: auto;
   }
-}
+
+  @keyframes appear {
+    0% {
+      opacity: 0;
+    }
+  }
 </style>

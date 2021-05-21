@@ -10,6 +10,8 @@ import '../assets/common/reset.scss'
 
 import '../assets/common/common.scss'
 
+import '../assets/common/transition.scss'
+
 import _6f6c098b from '../layouts/default.vue'
 
 const layouts = { "_default": sanitizeComponent(_6f6c098b) }

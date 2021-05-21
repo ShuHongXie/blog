@@ -4,5 +4,17 @@
   },
   "Logo": {
     "description": "Auto imported from components/Logo.vue"
+  },
+  "Scissors": {
+    "description": "Auto imported from components/Scissors.vue"
+  },
+  "Sidebar": {
+    "description": "Auto imported from components/Sidebar.vue"
+  },
+  "SidebarControl": {
+    "description": "Auto imported from components/SidebarControl.vue"
+  },
+  "ToTop": {
+    "description": "Auto imported from components/ToTop.vue"
   }
 }
