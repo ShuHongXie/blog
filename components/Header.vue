@@ -2,14 +2,14 @@
  * @Author: shuhongxie
  * @Date: 2021-05-20 17:23:24
  * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-21 16:55:37
+ * @LastEditTime: 2021-05-24 15:36:19
  * @FilePath: /nuxt-blog/components/Header.vue
 -->
 <template>
   <header class="header" :class="['cf', inTop ? 'top' : 'not--top']">
     <a class="header__title" href="/">谢小谢のBlog</a>
     <transition name="fat-fade">
-      <div v-show="showNav" class="header__nav">
+      <div :class="['header__nav', showNav ? 'show' : 'hide']">
         <nuxt-link
           v-for="(item, index) in navList"
           :key="item.title"
@@ -27,6 +27,7 @@
 
 <script lang="ts">
   import Vue from 'vue'
+  import { mapState } from 'vuex'
   export default Vue.extend({
     data() {
       return {
@@ -61,7 +62,36 @@
         ]
       }
     },
+    computed: {
+      ...mapState('operate', ['sidebarStatus'])
+    },
+    mounted() {
+      // 移动端屏幕下点击收缩导航
+      document.body.addEventListener('click', e => this.handleHideNav(e), true)
+      // pc下控制导航栏收缩
+      window.addEventListener('scroll', this.handleNavBar)
+    },
+    beforeDestroy() {},
     methods: {
+      handleNavBar() {
+        const scrollH: number = document.documentElement.scrollTop || document.body.scrollTop
+        const navNode = document.querySelector('.header') as HTMLElement
+        if (scrollH > 0) {
+          this.inTop = false
+          if (this.sidebarStatus && document.body.clientWidth > 768) {
+            navNode.style.maxWidth = 'calc( 100% - 300px )'
+          } else {
+            navNode.style.width = '100%'
+          }
+        } else {
+          this.inTop = true
+        }
+      },
+      handleHideNav(ev: Event) {
+        if (!(ev.target as HTMLElement).dataset.current) {
+          this.showNav = false
+        }
+      },
       handleNav() {
         this.showNav = !this.showNav
       },
@@ -145,7 +175,7 @@
           }
         }
       }
-      &.no--top {
+      &.not--top {
         position: fixed;
         & > .header__nav {
           opacity: 0;
@@ -180,6 +210,17 @@
         z-index: -999;
         padding-top: 44px;
         background-color: none;
+        &.show {
+          // transition: 0.3s;
+          opacity: 1;
+          transform: translateY(12px);
+        }
+        &.hide {
+          // transition: 0.3s;
+          opacity: 0;
+          display: none;
+          transform: translateY(0);
+        }
         a {
           text-indent: 10px;
           display: block;
@@ -214,7 +255,7 @@
         }
         background-color: none;
       }
-      &.no--top {
+      &.not--top {
         position: fixed;
         a {
           color: #000 !important;

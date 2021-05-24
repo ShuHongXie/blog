@@ -16,7 +16,6 @@ import { createStore } from './store.js'
 import nuxt_plugin_plugin_3b62d541 from 'nuxt_plugin_plugin_3b62d541' // Source: ./components/plugin.js (mode: 'all')
 import nuxt_plugin_workbox_75e37533 from 'nuxt_plugin_workbox_75e37533' // Source: ./workbox.js (mode: 'client')
 import nuxt_plugin_metaplugin_7499d946 from 'nuxt_plugin_metaplugin_7499d946' // Source: ./pwa/meta.plugin.js (mode: 'all')
-import nuxt_plugin_iconplugin_79417eba from 'nuxt_plugin_iconplugin_79417eba' // Source: ./pwa/icon.plugin.js (mode: 'all')
 import nuxt_plugin_axios_383219d7 from 'nuxt_plugin_axios_383219d7' // Source: ./axios.js (mode: 'all')
 
 // Component: <ClientOnly>
@@ -85,7 +84,7 @@ async function createApp(ssrContext, config = {}) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"title":"nuxt-blog","meta":[{"charset":"utf-8"},{"charset":"utf-8"},{"name":"apple-mobile-web-app-capable","content":"yes"},{"name":"apple-mobile-web-app-status-bar-style","content":"black"},{"name":"format-detection","content":"telephone=no"},{"name":"renderer","content":"webkit"},{"name":"X-UA-Compatible","content":"IE=edge"},{"name":"viewport","content":"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"\u002F\u002Fat.alicdn.com\u002Ft\u002Ffont_1096478_kp3hdrsolo.css"}],"style":[],"script":[]},
+    head: {"title":"nuxt-blog","meta":[{"charset":"utf-8"},{"charset":"utf-8"},{"name":"apple-mobile-web-app-capable","content":"yes"},{"name":"apple-mobile-web-app-status-bar-style","content":"black"},{"name":"format-detection","content":"telephone=no"},{"name":"renderer","content":"webkit"},{"name":"X-UA-Compatible","content":"IE=edge"},{"name":"viewport","content":"width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover"},{"hid":"charset","charset":"utf-8"},{"hid":"mobile-web-app-capable","name":"mobile-web-app-capable","content":"yes"},{"hid":"apple-mobile-web-app-title","name":"apple-mobile-web-app-title","content":"nuxt-blog"},{"hid":"description","name":"description","content":"## Build Setup"},{"hid":"og:type","name":"og:type","property":"og:type","content":"website"},{"hid":"og:title","name":"og:title","property":"og:title","content":"nuxt-blog"},{"hid":"og:site_name","name":"og:site_name","property":"og:site_name","content":"nuxt-blog"},{"hid":"og:description","name":"og:description","property":"og:description","content":"## Build Setup"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"\u002F\u002Fat.alicdn.com\u002Ft\u002Ffont_1096478_kp3hdrsolo.css"},{"hid":"shortcut-icon","rel":"shortcut icon","href":"\u002Ffavicon.ico"},{"rel":"manifest","href":"\u002F_nuxt\u002Fmanifest.c5c0dc64.json","hid":"manifest"}],"style":[],"script":[],"htmlAttrs":{"lang":"en"}},
 
     store,
     router,
@@ -224,10 +223,6 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof nuxt_plugin_metaplugin_7499d946 === 'function') {
     await nuxt_plugin_metaplugin_7499d946(app.context, inject)
-  }
-
-  if (typeof nuxt_plugin_iconplugin_79417eba === 'function') {
-    await nuxt_plugin_iconplugin_79417eba(app.context, inject)
   }
 
   if (typeof nuxt_plugin_axios_383219d7 === 'function') {

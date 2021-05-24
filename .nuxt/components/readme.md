@@ -6,8 +6,11 @@ You can directly use them in pages and other components without the need to impo
 
 **Tip:** If a component is conditionally rendered with `v-if` and is big, it is better to use `Lazy` or `lazy-` prefix to lazy load.
 
+- `<Footer>` | `<footer>` (components/Footer.vue)
 - `<Header>` | `<header>` (components/Header.vue)
 - `<Logo>` | `<logo>` (components/Logo.vue)
+- `<Nav>` | `<nav>` (components/Nav.vue)
+- `<Pagination>` | `<pagination>` (components/Pagination.vue)
 - `<Scissors>` | `<scissors>` (components/Scissors.vue)
 - `<Sidebar>` | `<sidebar>` (components/Sidebar.vue)
 - `<SidebarControl>` | `<sidebar-control>` (components/SidebarControl.vue)

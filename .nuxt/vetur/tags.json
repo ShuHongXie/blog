@@ -1,9 +1,18 @@
 {
+  "Footer": {
+    "description": "Auto imported from components/Footer.vue"
+  },
   "Header": {
     "description": "Auto imported from components/Header.vue"
   },
   "Logo": {
     "description": "Auto imported from components/Logo.vue"
+  },
+  "Nav": {
+    "description": "Auto imported from components/Nav.vue"
+  },
+  "Pagination": {
+    "description": "Auto imported from components/Pagination.vue"
   },
   "Scissors": {
     "description": "Auto imported from components/Scissors.vue"

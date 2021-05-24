@@ -20,8 +20,7 @@ $page_link_color: #99a9bf;
 @font-face {
   font-family: 'iconfont'; /* project id 1096478 */
   src: url('//at.alicdn.com/t/font_1096478_kp3hdrsolo.eot');
-  src: url('//at.alicdn.com/t/font_1096478_kp3hdrsolo.eot?#iefix')
-      format('embedded-opentype'),
+  src: url('//at.alicdn.com/t/font_1096478_kp3hdrsolo.eot?#iefix') format('embedded-opentype'),
     url('//at.alicdn.com/t/font_1096478_kp3hdrsolo.woff2') format('woff2'),
     url('//at.alicdn.com/t/font_1096478_kp3hdrsolo.woff') format('woff'),
     url('//at.alicdn.com/t/font_1096478_kp3hdrsolo.ttf') format('truetype'),
@@ -29,5 +28,25 @@ $page_link_color: #99a9bf;
 }
 
 body {
-  background-color: #000;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  // background-color: #000;
+  &::-webkit-scrollbar-track-piece {
+    //滚动条凹槽的颜色，还可以设置边框属性
+    background-color: #f8f8f8;
+  }
+  &::-webkit-scrollbar {
+    //滚动条的宽度
+    width: 4px;
+    height: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    //滚动条的设置
+    background-color: #cf81bf !important;
+    background-clip: padding-box;
+    min-height: 28px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #cf81bf;
+  }
 }

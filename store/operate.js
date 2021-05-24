@@ -2,16 +2,21 @@
  * @Author: shuhongxie
  * @Date: 2021-05-21 17:21:21
  * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-21 17:38:39
+ * @LastEditTime: 2021-05-24 11:34:54
  * @FilePath: /nuxt-blog/store/operate.js
  */
 export const state = () => ({
-  sidebarStatus: true
+  // 侧边栏开关
+  sidebarStatus: false
 })
 
 export const mutations = {
-  // 侧边栏控制
-  handleSidebarStatus(state, status) {
-    state.sidebarStatus = status
+  /**
+   * @description: 侧边栏开关控制
+   * @param {*} state
+   * @return {*}
+   */
+  handleSidebarStatus(state) {
+    state.sidebarStatus = !state.sidebarStatus
   }
 }

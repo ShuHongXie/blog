@@ -3,18 +3,21 @@
     "name": "user-id",
     "path": "/user/:id",
     "component": "/Users/xiexiaoxie/my/nuxt-blog/pages/user/_id/index.vue",
-    "chunkName": "pages/user/_id/index"
+    "chunkName": "pages/user/_id/index",
+    "_name": "_64895734"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/xiexiaoxie/my/nuxt-blog/pages/index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_6fa09e32"
   },
   {
     "name": "id",
     "path": "/:id",
     "component": "/Users/xiexiaoxie/my/nuxt-blog/pages/_id.vue",
-    "chunkName": "pages/_id"
+    "chunkName": "pages/_id",
+    "_name": "_49f2c10f"
   }
 ]
