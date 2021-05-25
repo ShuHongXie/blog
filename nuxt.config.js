@@ -2,13 +2,18 @@
  * @Author: shuhongxie
  * @Date: 2021-05-20 10:33:24
  * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-21 14:21:25
+ * @LastEditTime: 2021-05-25 16:58:30
  * @FilePath: /nuxt-blog/nuxt.config.js
  */
 export default {
+  debug: false,
+  dev: false,
+  env: {
+    ENV: process.env.ENV
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'nuxt-blog',
+    title: 'My Dream is to be a music producer',
     meta: [
       { charset: 'utf-8' },
       { charset: 'utf-8' },

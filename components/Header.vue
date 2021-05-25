@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-20 17:23:24
  * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-24 15:36:19
+ * @LastEditTime: 2021-05-25 14:53:44
  * @FilePath: /nuxt-blog/components/Header.vue
 -->
 <template>
@@ -14,7 +14,7 @@
           v-for="(item, index) in navList"
           :key="item.title"
           :to="item.url"
-          @click="e => search(index, e)"
+          @click.native="e => search(index, e)"
         >
           <i :class="['iconfont', item.icon]"></i>
           <span>{{ item.title }}</span>
@@ -27,7 +27,7 @@
 
 <script lang="ts">
   import Vue from 'vue'
-  import { mapState } from 'vuex'
+  import { mapState, mapMutations } from 'vuex'
   export default Vue.extend({
     data() {
       return {
@@ -73,6 +73,9 @@
     },
     beforeDestroy() {},
     methods: {
+      ...mapMutations({
+        show: 'operate/handleSearchStatus'
+      }),
       handleNavBar() {
         const scrollH: number = document.documentElement.scrollTop || document.body.scrollTop
         const navNode = document.querySelector('.header') as HTMLElement
@@ -96,11 +99,11 @@
         this.showNav = !this.showNav
       },
       search(idx: number, e: Event) {
+        console.log('点击了search')
+        console.log(idx, e)
         if (!idx) {
-          if (e.preventDefault) {
-            e.preventDefault()
-          }
-          this.$emit('handleComp', { search: true, black: true })
+          e.preventDefault()
+          this.show()
         }
       }
     }
@@ -212,7 +215,7 @@
         background-color: none;
         &.show {
           // transition: 0.3s;
-          opacity: 1;
+          opacity: 1 !important;
           transform: translateY(12px);
         }
         &.hide {

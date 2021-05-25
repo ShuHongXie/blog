@@ -2,11 +2,13 @@
  * @Author: shuhongxie
  * @Date: 2021-05-20 10:33:24
  * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-24 19:42:33
+ * @LastEditTime: 2021-05-25 17:30:13
  * @FilePath: /nuxt-blog/pages/index.vue
 -->
 <template>
   <div class="article">
+    <Pagination :total="100" />
+    <Progress />
     <div class="article__content md_box" v-html="str"></div>
   </div>
 </template>
@@ -18,6 +20,7 @@
   // import fancyBox from 'vue-fancybox'
   import { initCopyBtn } from '@/utils'
   import { str } from '../str'
+  import CategoryItem from '~/components/CategoryItem.vue'
   interface imagePreviewObject {
     width: number
     height: number
@@ -25,10 +28,7 @@
   }
   export default Vue.extend({
     data() {
-      return {
-        str,
-        imagePreview: [] as imagePreviewObject[]
-      }
+      return { str, imagePreview: [] as imagePreviewObject[] }
     },
     mounted() {
       // 初始化复制按钮

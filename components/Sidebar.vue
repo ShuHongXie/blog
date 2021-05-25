@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-20 17:23:24
  * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-24 12:00:19
+ * @LastEditTime: 2021-05-25 17:40:56
  * @FilePath: /nuxt-blog/components/Sidebar.vue
 -->
 <template>
@@ -106,7 +106,6 @@
 
 <style lang="scss">
   @import '~/assets/common/common.scss';
-  // @import '~/assets/common/transition.scss';
   .button--toggle {
     width: 120px;
     height: 32px;

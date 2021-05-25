@@ -2,13 +2,16 @@
  * @Author: shuhongxie
  * @Date: 2021-05-21 11:23:26
  * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-21 16:54:38
+ * @LastEditTime: 2021-05-25 13:46:33
  * @FilePath: /nuxt-blog/components/Scissors.vue
 -->
 <template>
   <div class="scissors">
     <div class="scissors__line"></div>
-    <i class="scissors__icon" :class="['iconfont iconhuojian', styles ? 'not_white' : '']"></i>
+    <i
+      class="scissors__icon"
+      :class="['iconfont iconhuojian', styles ? 'not__white' : 'white']"
+    ></i>
   </div>
 </template>
 
@@ -54,8 +57,11 @@
       left: 6%;
       z-index: 10;
       transition: 1s;
-      &.not_white {
+      &.not__white {
         background-color: #fae8f6 !important;
+      }
+      &.white {
+        background-color: #fff !important;
       }
     }
   }

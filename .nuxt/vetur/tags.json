@@ -1,4 +1,7 @@
 {
+  "CategoryItem": {
+    "description": "Auto imported from components/CategoryItem.vue"
+  },
   "Footer": {
     "description": "Auto imported from components/Footer.vue"
   },
@@ -11,11 +14,20 @@
   "Nav": {
     "description": "Auto imported from components/Nav.vue"
   },
+  "Overlay": {
+    "description": "Auto imported from components/Overlay.vue"
+  },
   "Pagination": {
     "description": "Auto imported from components/Pagination.vue"
   },
+  "Progress": {
+    "description": "Auto imported from components/Progress.vue"
+  },
   "Scissors": {
     "description": "Auto imported from components/Scissors.vue"
+  },
+  "Search": {
+    "description": "Auto imported from components/Search.vue"
   },
   "Sidebar": {
     "description": "Auto imported from components/Sidebar.vue"

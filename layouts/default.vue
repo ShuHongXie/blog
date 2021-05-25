@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-20 10:33:24
  * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-24 14:13:07
+ * @LastEditTime: 2021-05-25 11:50:52
  * @FilePath: /nuxt-blog/layouts/default.vue
 -->
 <template>
@@ -11,10 +11,14 @@
     <Header />
     <!-- 侧边栏 -->
     <Sidebar />
+    <!-- 查询区 -->
+    <Search />
     <!-- 主区域导航 -->
     <Nav />
     <!-- 主区域 -->
-    <Nuxt />
+    <div class="container">
+      <Nuxt />
+    </div>
     <!-- 页脚 -->
     <Footer />
     <!-- 侧边栏开关 -->
@@ -23,3 +27,19 @@
     <ToTop />
   </div>
 </template>
+
+<style lang="scss" scoped>
+  .container {
+    animation: tran 1s 1;
+  }
+  @keyframes tran {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+</style>

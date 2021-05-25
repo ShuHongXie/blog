@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-21 09:30:59
  * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-21 18:33:47
+ * @LastEditTime: 2021-05-24 21:41:50
  * @FilePath: /nuxt-blog/.eslintrc.js
  */
 module.exports = {
@@ -19,6 +19,12 @@ module.exports = {
   plugins: [],
   // add your custom rules here
   rules: {
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/class-name-casing': 'off',
     'prettier/prettier': [
       'error',
       // 如果插件配置中修改了相关选项，

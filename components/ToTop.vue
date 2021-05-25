@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-21 17:04:27
  * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-24 10:03:09
+ * @LastEditTime: 2021-05-25 14:34:06
  * @FilePath: /nuxt-blog/components/ToTop.vue
 -->
 <template>

@@ -4,9 +4,10 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
+const _48298257 = () => interopDefault(import('../pages/categories.vue' /* webpackChunkName: "pages/categories" */))
+const _d94dc222 = () => interopDefault(import('../pages/tag.vue' /* webpackChunkName: "pages/tag" */))
 const _64895734 = () => interopDefault(import('../pages/user/_id/index.vue' /* webpackChunkName: "pages/user/_id/index" */))
 const _6fa09e32 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
-const _49f2c10f = () => interopDefault(import('../pages/_id.vue' /* webpackChunkName: "pages/_id" */))
 
 const emptyFn = () => {}
 
@@ -20,6 +21,14 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
+    path: "/categories",
+    component: _48298257,
+    name: "categories"
+  }, {
+    path: "/tag",
+    component: _d94dc222,
+    name: "tag"
+  }, {
     path: "/user/:id",
     component: _64895734,
     name: "user-id"
@@ -27,10 +36,6 @@ export const routerOptions = {
     path: "/",
     component: _6fa09e32,
     name: "index"
-  }, {
-    path: "/:id",
-    component: _49f2c10f,
-    name: "id"
   }],
 
   fallback: false
