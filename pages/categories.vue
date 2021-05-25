@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-25 17:08:31
  * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-25 17:57:18
+ * @LastEditTime: 2021-05-25 19:20:49
  * @FilePath: /nuxt-blog/pages/categories.vue
 -->
 <template>
@@ -44,13 +44,29 @@
 <style lang="scss">
   .category {
     box-sizing: border-box;
-    padding-left: 40px;
     overflow: hidden;
     margin: 0 20px;
+    padding-left: 40px;
     .category__title {
       padding: 20px 0;
       font-size: 36px;
       text-align: center;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    // 大于768时
+    .category {
+      width: 700px;
+      margin: 0 auto;
+      position: relative;
+      padding: 0 30px 0 70px;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    // 小于768时
+    .category {
+      margin: 0 50px;
     }
   }
 </style>

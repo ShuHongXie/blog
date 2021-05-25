@@ -12,6 +12,7 @@ export { default as Scissors } from '../../components/Scissors.vue'
 export { default as Search } from '../../components/Search.vue'
 export { default as Sidebar } from '../../components/Sidebar.vue'
 export { default as SidebarControl } from '../../components/SidebarControl.vue'
+export { default as Snow } from '../../components/Snow.vue'
 export { default as ToTop } from '../../components/ToTop.vue'
 
 export const LazyCategoryItem = import('../../components/CategoryItem.vue' /* webpackChunkName: "components/category-item" */).then(c => wrapFunctional(c.default || c))
@@ -26,4 +27,5 @@ export const LazyScissors = import('../../components/Scissors.vue' /* webpackChu
 export const LazySearch = import('../../components/Search.vue' /* webpackChunkName: "components/search" */).then(c => wrapFunctional(c.default || c))
 export const LazySidebar = import('../../components/Sidebar.vue' /* webpackChunkName: "components/sidebar" */).then(c => wrapFunctional(c.default || c))
 export const LazySidebarControl = import('../../components/SidebarControl.vue' /* webpackChunkName: "components/sidebar-control" */).then(c => wrapFunctional(c.default || c))
+export const LazySnow = import('../../components/Snow.vue' /* webpackChunkName: "components/snow" */).then(c => wrapFunctional(c.default || c))
 export const LazyToTop = import('../../components/ToTop.vue' /* webpackChunkName: "components/to-top" */).then(c => wrapFunctional(c.default || c))

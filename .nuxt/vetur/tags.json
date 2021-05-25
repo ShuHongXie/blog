@@ -35,6 +35,9 @@
   "SidebarControl": {
     "description": "Auto imported from components/SidebarControl.vue"
   },
+  "Snow": {
+    "description": "Auto imported from components/Snow.vue"
+  },
   "ToTop": {
     "description": "Auto imported from components/ToTop.vue"
   }
