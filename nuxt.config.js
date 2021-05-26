@@ -2,12 +2,10 @@
  * @Author: shuhongxie
  * @Date: 2021-05-20 10:33:24
  * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-25 16:58:30
+ * @LastEditTime: 2021-05-26 10:15:26
  * @FilePath: /nuxt-blog/nuxt.config.js
  */
 export default {
-  debug: false,
-  dev: false,
   env: {
     ENV: process.env.ENV
   },
@@ -36,6 +34,7 @@ export default {
       }
     ]
   },
+  loading: { color: '#3B8070' },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
@@ -44,6 +43,7 @@ export default {
     '@/assets/common/transition.scss'
   ],
 
+  layoutTransition: 'fat-fade',
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
 

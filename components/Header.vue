@@ -2,12 +2,12 @@
  * @Author: shuhongxie
  * @Date: 2021-05-20 17:23:24
  * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-25 14:53:44
+ * @LastEditTime: 2021-05-26 09:56:28
  * @FilePath: /nuxt-blog/components/Header.vue
 -->
 <template>
   <header class="header" :class="['cf', inTop ? 'top' : 'not--top']">
-    <a class="header__title" href="/">谢小谢のBlog</a>
+    <nuxt-link class="header__title" to="/">谢小谢のBlog</nuxt-link>
     <transition name="fat-fade">
       <div :class="['header__nav', showNav ? 'show' : 'hide']">
         <nuxt-link

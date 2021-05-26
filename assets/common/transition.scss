@@ -55,6 +55,29 @@ $animation-duration-base: 0.3s;
       animation: fat-scale-leave $animation-duration-base both;
     }
   }
+
+  &-tran {
+    &-enter-active {
+      animation: fat-tran-enter 0.8s both;
+    }
+    &-leave-active {
+      animation: fat-tran-leave 0.8s both;
+    }
+  }
+}
+
+@keyframes fat-tran-enter {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
+
+@keyframes fat-tran-leave {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes fat-fade-enter {

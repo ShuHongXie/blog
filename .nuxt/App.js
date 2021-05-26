@@ -31,7 +31,7 @@ export default {
 
     const transitionEl = h('transition', {
       props: {
-        name: 'layout',
+        name: 'fat-fade',
         mode: 'out-in'
       },
       on: {
@@ -186,6 +186,10 @@ export default {
     },
 
     setLayout (layout) {
+      if(layout && typeof layout !== 'string') {
+        throw new Error('[nuxt] Avoid using non-string value as layout property.')
+      }
+
       if (!layout || !layouts['_' + layout]) {
         layout = 'default'
       }

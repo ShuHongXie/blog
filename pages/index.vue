@@ -27,6 +27,7 @@
     url: string
   }
   export default Vue.extend({
+    transition: 'fat-tran',
     data() {
       return { str, imagePreview: [] as imagePreviewObject[] }
     },

@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-21 17:04:27
  * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-25 10:53:43
+ * @LastEditTime: 2021-05-26 10:13:46
  * @FilePath: /nuxt-blog/pages/tag.vue
 -->
 <template>
@@ -26,6 +26,7 @@
 <script lang="ts">
   import Vue from 'vue'
   export default Vue.extend({
+    transition: 'fat-tran',
     data() {
       return {
         list: [

@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-20 10:33:24
  * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-25 19:41:57
+ * @LastEditTime: 2021-05-26 10:29:33
  * @FilePath: /nuxt-blog/layouts/default.vue
 -->
 <template>
@@ -19,7 +19,7 @@
     <Nav />
     <!-- 主区域 -->
     <div class="container">
-      <Nuxt />
+      <Nuxt :key="key" />
     </div>
     <!-- 页脚 -->
     <Footer />
@@ -30,8 +30,31 @@
   </div>
 </template>
 
+<script>
+  import Vue from 'vue'
+  import { initSnowflake } from '@/utils'
+  export default Vue.extend({
+    key(route) {
+      return route.fullPath
+    },
+    data() {
+      return {
+        isChangeRoute: true
+      }
+    },
+    watch: {
+      $route() {}
+    },
+    mounted() {
+      console.log('初始化了')
+    }
+  })
+</script>
+
 <style lang="scss" scoped>
   .container {
+    position: relative;
+    z-index: 2;
     animation: tran 1s 1;
   }
   @keyframes tran {
