@@ -1,42 +1,36 @@
 <!--
  * @Author: shuhongxie
  * @Date: 2021-05-25 17:08:31
- * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-26 10:31:23
+ * @LastEditors: 谢树宏
+ * @LastEditTime: 2021-06-02 11:06:12
  * @FilePath: /nuxt-blog/pages/categories.vue
 -->
 <template>
   <div class="category">
     <div class="category__title">Categories - {{ count }}</div>
-    <category-item :data="data"></category-item>
+    <category-item :data="list"></category-item>
   </div>
 </template>
 
 <script lang="ts">
+  import config from '@/config'
   export default {
     transition: 'fat-tran',
-    data() {
+    async asyncData({ $axios }) {
+      const {
+        data: { count, list }
+      } = await $axios.$get(`${config.domain}/blog/categories`)
       return {
-        count: '123',
-        data: [
-          {
-            id: 1,
-            count: 5,
-            name: '分类1',
-            categorys: [
-              {
-                id: 2,
-                count: 10,
-                name: '分类1-1'
-              }
-            ]
-          },
-          {
-            id: 2,
-            count: 5,
-            name: '分类2'
-          }
-        ]
+        list,
+        count
+      }
+    },
+    data() {
+      return {}
+    },
+    head() {
+      return {
+        title: 'Categories | 谢小谢のBlog'
       }
     }
   }

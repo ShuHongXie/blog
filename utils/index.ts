@@ -2,8 +2,8 @@
 /*
  * @Author: shuhongxie
  * @Date: 2021-05-24 10:41:44
- * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-25 19:48:43
+ * @LastEditors: 谢树宏
+ * @LastEditTime: 2021-06-03 10:30:55
  * @FilePath: /nuxt-blog/utils/index.ts
  */
 
@@ -76,8 +76,6 @@ export interface ParticlesObjct {
  */
 export function initSnowflake(className: string): void {
   const canvas = document.getElementById(className) as HTMLCanvasElement
-  console.log(canvas)
-
   const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
 
   // canvas dimensions

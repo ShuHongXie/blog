@@ -1,10 +1,12 @@
 /*
  * @Author: shuhongxie
  * @Date: 2021-05-21 17:21:21
- * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-25 17:30:49
- * @FilePath: /nuxt-blog/store/operate.js
+ * @LastEditors: 谢树宏
+ * @LastEditTime: 2021-06-02 16:37:42
+ * @FilePath: /nuxt-blog/store/operate.ts
  */
+import { GetterTree, ActionTree, MutationTree } from 'vuex'
+
 export const state = () => ({
   // 侧边栏开关
   sidebarStatus: false,
@@ -12,7 +14,9 @@ export const state = () => ({
   searchStatus: false
 })
 
-export const mutations = {
+export type RootState = ReturnType<typeof state>
+
+export const mutations: MutationTree<RootState> = {
   /**
    * @description: 侧边栏开关控制
    * @param {*} state

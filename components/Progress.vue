@@ -1,15 +1,15 @@
 <!--
  * @Author: shuhongxie
  * @Date: 2021-05-25 10:58:16
- * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-25 11:27:42
+ * @LastEditors: 谢树宏
+ * @LastEditTime: 2021-06-03 16:50:22
  * @FilePath: /nuxt-blog/components/Progress.vue
 -->
 <template>
   <div class="progress">
     <ul v-for="(item, index) in finalData" :key="index" class="progress__line">
       <li class="progress__line__year">{{ item[0].year }}</li>
-      <li v-for="items in item" :key="items.create_time" class="progress__line__date">
+      <li v-for="(items, index) in item" :key="index" class="progress__line__date">
         <span class="progress__line__time">{{ items.create_time }}</span>
         <nuxt-link class="progress__line__link" :to="`/article/${items.link}`">
           {{ items.title }}
@@ -43,7 +43,9 @@
         ]
       }
     },
-    mounted() {},
+    mounted() {
+      this.init()
+    },
     methods: {
       init() {
         const { data } = this

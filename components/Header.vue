@@ -1,8 +1,8 @@
 <!--
  * @Author: shuhongxie
  * @Date: 2021-05-20 17:23:24
- * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-26 09:56:28
+ * @LastEditors: 谢树宏
+ * @LastEditTime: 2021-06-03 15:50:15
  * @FilePath: /nuxt-blog/components/Header.vue
 -->
 <template>
@@ -99,8 +99,6 @@
         this.showNav = !this.showNav
       },
       search(idx: number, e: Event) {
-        console.log('点击了search')
-        console.log(idx, e)
         if (!idx) {
           e.preventDefault()
           this.show()

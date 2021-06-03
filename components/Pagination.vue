@@ -1,24 +1,28 @@
 <!--
  * @Author: shuhongxie
  * @Date: 2021-05-24 19:45:50
- * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-25 10:17:40
+ * @LastEditors: 谢树宏
+ * @LastEditTime: 2021-06-02 19:42:54
  * @FilePath: /nuxt-blog/components/Pagination.vue
 -->
 <template>
   <div class="pagination">
-    <span class="pagination__prev" @click="$emit('prev', currentPage)">
+    <span v-if="currentPage !== 1" class="pagination__prev" @click="jump('prev')">
       <i class="iconfont iconprevious"></i>
     </span>
     <span
       v-for="(item, index) in numberList"
       :key="index"
       :class="['pagination__number', currentPage === index + 1 ? 'pagination__number--active' : '']"
-      @click="$emit('current-change', index + 1)"
+      @click="jump('', index + 1)"
     >
       {{ index + 1 }}
     </span>
-    <span class="pagination__next" @click="$emit('next', currentPage)">
+    <span
+      v-if="currentPage !== Math.floor(total / pageSize) + 1 && total / pageSize !== 1"
+      class="pagination__next"
+      @click="jump('next')"
+    >
       <i class="iconfont iconnext"></i>
     </span>
   </div>
@@ -39,6 +43,14 @@
       currentPage: {
         type: Number,
         default: 1
+      },
+      url: {
+        type: String,
+        default: ''
+      },
+      turnOn: {
+        type: Boolean,
+        default: true
       }
     },
     data() {
@@ -48,8 +60,6 @@
     },
     watch: {
       total() {
-        console.log('toatl变化')
-
         this.init()
       }
     },
@@ -63,6 +73,32 @@
         for (let i = 0; i < length; i++) {
           this.numberList.push(1)
         }
+      },
+      /**
+       * @description: 跳转
+       * @param {*} action 动作
+       * @return {*}
+       */
+      jump(action: string, pageNum: number) {
+        if (action) {
+          this.$emit('change', {
+            pageNum: action === 'prev' ? this.currentPage - 1 : this.currentPage + 1
+          })
+        } else {
+          this.$emit('change', { pageNum })
+        }
+
+        if (!this.turnOn) return
+        switch (action) {
+          case 'prev':
+            location.href = `${this.url}/${this.currentPage - 1}`
+            break
+          case 'next':
+            location.href = `${this.url}/${this.currentPage + 1}`
+            break
+          default:
+            location.href = `${this.url}/${pageNum}`
+        }
       }
     }
   })
@@ -73,6 +109,7 @@
   .pagination {
     display: flex;
     justify-content: center;
+    padding: 20px 0;
     &__number {
       display: inline-block;
       width: 24px;

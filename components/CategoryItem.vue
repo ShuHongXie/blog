@@ -1,15 +1,15 @@
 <!--
  * @Author: shuhongxie
  * @Date: 2021-05-25 17:20:12
- * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-25 17:39:31
+ * @LastEditors: 谢树宏
+ * @LastEditTime: 2021-06-02 10:59:40
  * @FilePath: /nuxt-blog/components/CategoryItem.vue
 -->
 <template>
   <ul>
     <li v-for="item in data" :key="item.id">
       <nuxt-link :to="`/categories/${item.name}/1`">{{ item.name }}</nuxt-link>
-      <span>({{ item.count ? item.count : 0 }})</span>
+      <!-- <span>({{ item.count ? item.count : 0 }})</span> -->
       <category-item v-if="item.categorys" :data="item.categorys"></category-item>
     </li>
   </ul>
@@ -26,7 +26,9 @@
     data() {
       return {}
     },
-    mounted() {},
+    mounted() {
+      console.log(this.data)
+    },
     methods: {}
   }
 </script>

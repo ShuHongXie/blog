@@ -1,8 +1,8 @@
 <!--
  * @Author: shuhongxie
  * @Date: 2021-05-20 10:33:24
- * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-26 10:29:33
+ * @LastEditors: 谢树宏
+ * @LastEditTime: 2021-06-03 16:59:09
  * @FilePath: /nuxt-blog/layouts/default.vue
 -->
 <template>
@@ -19,7 +19,7 @@
     <Nav />
     <!-- 主区域 -->
     <div class="container">
-      <Nuxt :key="key" />
+      <Nuxt />
     </div>
     <!-- 页脚 -->
     <Footer />
@@ -30,23 +30,13 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
   import Vue from 'vue'
-  import { initSnowflake } from '@/utils'
+  import config from '@/config'
   export default Vue.extend({
-    key(route) {
-      return route.fullPath
-    },
+    middleware: 'common',
     data() {
-      return {
-        isChangeRoute: true
-      }
-    },
-    watch: {
-      $route() {}
-    },
-    mounted() {
-      console.log('初始化了')
+      return {}
     }
   })
 </script>

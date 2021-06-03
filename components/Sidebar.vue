@@ -1,48 +1,52 @@
 <!--
  * @Author: shuhongxie
  * @Date: 2021-05-20 17:23:24
- * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-25 17:40:56
+ * @LastEditors: 谢树宏
+ * @LastEditTime: 2021-06-03 17:14:45
  * @FilePath: /nuxt-blog/components/Sidebar.vue
 -->
 <template>
   <transition name="fat-popup-slide-left">
     <div v-show="sidebarStatus" class="sidebar">
       <div class="sidebar__header">
-        <div class="sidebar__header--toggle" @click="toggle">{{ toggleText }}</div>
-        <Scissors :style="scissorsStyle" />
+        <div v-if="isArticlePage" class="sidebar__header--toggle" @click="toggle">
+          {{ toggleText }}
+        </div>
+        <Scissors v-if="isArticlePage" :style="scissorsStyle" />
       </div>
       <div class="sidebar__warp">
-        <transition-group mode="out-in" name="fat-popup-slide-left">
+        <transition-group v-if="isArticlePage" mode="out-in" name="fat-popup-slide-left">
           <div v-if="toggleStatus" key="1" class="user">
             <div class="user__avatar">
               <img
-                :src="userInfox.avatar ? `${getDomain()}${userInfox.avatar}` : ''"
+                :src="userInfo.info.avatar ? `${config.domain}${userInfo.info.avatar}` : ''"
                 alt="avator"
               />
             </div>
-            <p class="user__name">{{ userInfox.name }}</p>
-            <p class="user__title">{{ userInfox.title }}</p>
-            <nuxt-link tag="div" :to="userInfox.follow" class="user__follow">Follow Me</nuxt-link>
+            <p class="user__name">{{ userInfo.info.name }}</p>
+            <p class="user__title">{{ userInfo.info.title }}</p>
+            <nuxt-link tag="div" :to="userInfo.info.follow" class="user__follow">
+              Follow Me
+            </nuxt-link>
             <Scissors :style="scissorsStyle" />
             <div class="user__item">
               <nuxt-link class="user__item--link" tag="div" to="/archives/1">
                 Articles
-                <span>{{ userInfox.articleCount }}</span>
+                <span>{{ userInfo.articleCount }}</span>
               </nuxt-link>
               <nuxt-link class="user__item--link" tag="div" to="/tag">
                 Tags
-                <span>{{ userInfox.tagCount }}</span>
+                <span>{{ userInfo.tagCount }}</span>
               </nuxt-link>
               <nuxt-link class="user__item--link" tag="div" to="/categories">
                 Categories
-                <span>{{ userInfox.categoryCount }}</span>
+                <span>{{ userInfo.categoryCount }}</span>
               </nuxt-link>
             </div>
             <Scissors :style="scissorsStyle" />
             <p class="user__links">Links</p>
             <div class="user__otherlinks">
-              <nuxt-link :to="userInfox.follow">ShuHongXie</nuxt-link>
+              <nuxt-link :to="userInfo.info.follow">ShuHongXie</nuxt-link>
             </div>
           </div>
           <div v-else key="2" class="catalog">
@@ -53,6 +57,37 @@
             </div>
           </div>
         </transition-group>
+        <div v-else key="1" class="user">
+          <div class="user__avatar">
+            <img
+              :src="userInfo.info.avatar ? `${config.domain}${userInfo.info.avatar}` : ''"
+              alt="avator"
+            />
+          </div>
+          <p class="user__name">{{ userInfo.info.name }}</p>
+          <p class="user__title">{{ userInfo.info.title }}</p>
+          <nuxt-link tag="div" :to="userInfo.info.follow" class="user__follow">Follow Me</nuxt-link>
+          <Scissors :style="scissorsStyle" />
+          <div class="user__item">
+            <nuxt-link class="user__item--link" tag="div" to="/archives/1">
+              Articles
+              <span>{{ userInfo.articleCount }}</span>
+            </nuxt-link>
+            <nuxt-link class="user__item--link" tag="div" to="/tag">
+              Tags
+              <span>{{ userInfo.tagCount }}</span>
+            </nuxt-link>
+            <nuxt-link class="user__item--link" tag="div" to="/categories">
+              Categories
+              <span>{{ userInfo.categoryCount }}</span>
+            </nuxt-link>
+          </div>
+          <Scissors :style="scissorsStyle" />
+          <p class="user__links">Links</p>
+          <div class="user__otherlinks">
+            <nuxt-link :to="userInfo.info.follow">ShuHongXie</nuxt-link>
+          </div>
+        </div>
       </div>
 
       <!-- <transition name="fat-popup-slide-left">
@@ -71,6 +106,8 @@
 <script lang="ts">
   import Vue from 'vue'
   import { mapState } from 'vuex'
+  import config from '@/config'
+  import Gitalk from 'gitalk'
   export default Vue.extend({
     data() {
       return {
@@ -82,18 +119,12 @@
         toggleText: 'Toggle article',
         writePercent: 0,
         localto: '',
-        userInfox: {
-          name: '谢小谢',
-          title: '大魔王',
-          articleCount: 10,
-          tagCount: 12,
-          categoryCount: 13,
-          follow: '/dsadsa'
-        }
+        config
       }
     },
     computed: {
-      ...mapState('operate', ['sidebarStatus'])
+      ...mapState('operate', ['sidebarStatus']),
+      ...mapState('common', ['userInfo', 'isArticlePage'])
     },
     mounted() {},
     methods: {

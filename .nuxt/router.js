@@ -4,9 +4,13 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _48298257 = () => interopDefault(import('../pages/categories.vue' /* webpackChunkName: "pages/categories" */))
+const _af1053bc = () => interopDefault(import('../pages/about.vue' /* webpackChunkName: "pages/about" */))
+const _84eaa8cc = () => interopDefault(import('../pages/categories/index.vue' /* webpackChunkName: "pages/categories/index" */))
 const _d94dc222 = () => interopDefault(import('../pages/tag.vue' /* webpackChunkName: "pages/tag" */))
+const _6b3f17aa = () => interopDefault(import('../pages/archives/_pageNum.vue' /* webpackChunkName: "pages/archives/_pageNum" */))
+const _e02bc2d6 = () => interopDefault(import('../pages/article/_link.vue' /* webpackChunkName: "pages/article/_link" */))
 const _64895734 = () => interopDefault(import('../pages/user/_id/index.vue' /* webpackChunkName: "pages/user/_id/index" */))
+const _3ff79672 = () => interopDefault(import('../pages/categories/_categoryName/_pageNum.vue' /* webpackChunkName: "pages/categories/_categoryName/_pageNum" */))
 const _6fa09e32 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
@@ -21,17 +25,33 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
+    path: "/about",
+    component: _af1053bc,
+    name: "about"
+  }, {
     path: "/categories",
-    component: _48298257,
+    component: _84eaa8cc,
     name: "categories"
   }, {
     path: "/tag",
     component: _d94dc222,
     name: "tag"
   }, {
+    path: "/archives/:pageNum?",
+    component: _6b3f17aa,
+    name: "archives-pageNum"
+  }, {
+    path: "/article/:link?",
+    component: _e02bc2d6,
+    name: "article-link"
+  }, {
     path: "/user/:id",
     component: _64895734,
     name: "user-id"
+  }, {
+    path: "/categories/:categoryName/:pageNum?",
+    component: _3ff79672,
+    name: "categories-categoryName-pageNum"
   }, {
     path: "/",
     component: _6fa09e32,

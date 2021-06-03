@@ -1,8 +1,8 @@
 <!--
  * @Author: shuhongxie
  * @Date: 2021-05-24 10:03:35
- * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-24 10:27:53
+ * @LastEditors: 谢树宏
+ * @LastEditTime: 2021-06-03 15:33:30
  * @FilePath: /nuxt-blog/components/Footer.vue
 -->
 <template>
@@ -10,10 +10,10 @@
     <div class="footer__author">©2019 By 谢小谢</div>
     <div class="footer__uvpv">
       <i class="iconfont iconSeedling"></i>
-      <span>1232</span>
+      <span>{{ pvCount }}</span>
       |
       <i class="iconfont iconEnergy"></i>
-      <span>1232</span>
+      <span>{{ uvCount }}</span>
     </div>
     <a class="footer__code" href="http://beian.miit.gov.cn">粤ICP备19149086号</a>
   </footer>
@@ -27,7 +27,8 @@
       return {}
     },
     computed: {
-      ...mapState('operate', ['sidebarStatus'])
+      ...mapState('operate', ['sidebarStatus']),
+      ...mapState('common', ['pvCount', 'uvCount'])
     },
     methods: {
       handleSidebarStatus() {

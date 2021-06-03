@@ -1,8 +1,8 @@
 <!--
  * @Author: shuhongxie
  * @Date: 2021-05-25 11:28:09
- * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-25 16:11:15
+ * @LastEditors: 谢树宏
+ * @LastEditTime: 2021-06-03 15:42:36
  * @FilePath: /nuxt-blog/components/Search.vue
 -->
 <template>
@@ -20,19 +20,25 @@
       <div class="search__content">
         <div v-if="searchList && searchList.list && searchList.list.length">
           <ul class="list">
-            <li v-for="item in searchList" :key="item" class="list__item">
-              <nuxt-link class="list__item__link" :to="`/article/${item.link}`">
+            <li v-for="item in searchList.list" :key="item.id" class="list__item">
+              <span class="list__item__link" @click="toOther(item)">
                 {{ item.title }}
-              </nuxt-link>
+              </span>
             </li>
           </ul>
           <div class="search__pager">
-            <Pagination />
+            <Pagination
+              :current-page="searchList.pageNum"
+              :page-size="searchList.pageSize"
+              :total="searchList.total"
+              :turn-on="false"
+              @change="change"
+            />
           </div>
-          <Scissors />
+          <Scissors :styles="false" />
         </div>
-        <div v-if="searchList && searchList.list && !searchList.list.length">
-          <p>没有找到相关文章</p>
+        <div v-if="searchList && searchList.list && !searchList.list.length" class="search__empty">
+          <p class="search__empty__text">没有找到相关文章...</p>
           <Scissors :styles="false" />
         </div>
         <i class="iconfont iconclose search__icon--close" @click="hide"></i>
@@ -43,29 +49,44 @@
 
 <script lang="ts">
   import Vue from 'vue'
-  import { mapState, mapMutations } from 'vuex'
+  import { mapState, mapMutations, mapActions } from 'vuex'
   import Overlay from './Overlay.vue'
   export default Vue.extend({
     components: { Overlay },
     data() {
       return {
-        searchList: {
-          list: []
-        },
-        searchText: ''
+        searchText: '',
+        pageNum: 1,
+        searchCont: ''
       }
     },
     computed: {
-      ...mapState('operate', ['searchStatus'])
+      ...mapState('operate', ['searchStatus']),
+      ...mapState('search', ['searchList'])
     },
     mounted() {},
     methods: {
       ...mapMutations({
-        hide: 'operate/handleSearchStatus'
+        hide: 'operate/handleSearchStatus',
+        save: 'search/saveSearchList'
       }),
+      toOther(item: any) {
+        location.href = `/article/${item.link}`
+        this.hide()
+      },
+      change({ pageNum }: { pageNum: number }) {
+        console.log(pageNum)
+        this.save({ ...this.searchList, pageNum })
+        this.$store.dispatch('search/getSearchList', { key: this.searchText, pageNum })
+      },
       close() {},
       changeEvent(e: Event) {
-        console.log(e)
+        const value = (e.target as HTMLInputElement).value
+        if (value) {
+          this.pageNum = 1
+          this.searchText = value
+          this.$store.dispatch('search/getSearchList', { key: value, pageNum: 1 })
+        }
       },
       stopAll() {}
     }
@@ -87,6 +108,11 @@
     color: $base_color;
     transform: translateY(30px);
     top: 0;
+    &__empty {
+      &__text {
+        margin: 30px 0;
+      }
+    }
     &__title {
       line-height: 44px;
     }
