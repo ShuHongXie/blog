@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-20 17:23:24
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-03 17:14:45
+ * @LastEditTime: 2021-06-03 17:20:47
  * @FilePath: /nuxt-blog/components/Sidebar.vue
 -->
 <template>
@@ -57,7 +57,7 @@
             </div>
           </div>
         </transition-group>
-        <div v-else key="1" class="user">
+        <div v-else class="user">
           <div class="user__avatar">
             <img
               :src="userInfo.info.avatar ? `${config.domain}${userInfo.info.avatar}` : ''"

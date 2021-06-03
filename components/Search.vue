@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-25 11:28:09
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-03 15:42:36
+ * @LastEditTime: 2021-06-03 17:38:18
  * @FilePath: /nuxt-blog/components/Search.vue
 -->
 <template>
@@ -174,6 +174,7 @@
             overflow: hidden;
             white-space: nowrap;
             padding-left: 34px;
+            cursor: pointer;
           }
         }
       }
