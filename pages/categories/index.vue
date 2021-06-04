@@ -2,8 +2,8 @@
  * @Author: shuhongxie
  * @Date: 2021-05-25 17:08:31
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-02 11:06:12
- * @FilePath: /nuxt-blog/pages/categories.vue
+ * @LastEditTime: 2021-06-04 14:44:34
+ * @FilePath: /nuxt-blog/pages/categories/index.vue
 -->
 <template>
   <div class="category">
@@ -14,9 +14,10 @@
 
 <script lang="ts">
   import config from '@/config'
+  import { Context } from '@nuxt/types'
   export default {
     transition: 'fat-tran',
-    async asyncData({ $axios }) {
+    async asyncData({ $axios }: Context) {
       const {
         data: { count, list }
       } = await $axios.$get(`${config.domain}/blog/categories`)

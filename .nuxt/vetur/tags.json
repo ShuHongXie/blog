@@ -8,11 +8,17 @@
   "Header": {
     "description": "Auto imported from components/Header.vue"
   },
+  "List": {
+    "description": "Auto imported from components/List.vue"
+  },
   "Logo": {
     "description": "Auto imported from components/Logo.vue"
   },
   "Nav": {
     "description": "Auto imported from components/Nav.vue"
+  },
+  "Navbar": {
+    "description": "Auto imported from components/Navbar.vue"
   },
   "Overlay": {
     "description": "Auto imported from components/Overlay.vue"
@@ -40,5 +46,8 @@
   },
   "ToTop": {
     "description": "Auto imported from components/ToTop.vue"
+  },
+  "Test": {
+    "description": "Auto imported from components/test.tsx"
   }
 }

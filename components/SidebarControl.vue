@@ -1,14 +1,14 @@
 <!--
  * @Author: shuhongxie
  * @Date: 2021-05-21 18:23:15
- * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-24 15:12:30
+ * @LastEditors: 谢树宏
+ * @LastEditTime: 2021-06-04 15:58:59
  * @FilePath: /nuxt-blog/components/SidebarControl.vue
 -->
 <template>
   <i
     :class="['iconfont iconright sidebar__controller', sidebarStatus ? 'open' : '']"
-    @click="handleSidebarStatus"
+    @click="handleSidebarStatus(!sidebarStatus)"
   ></i>
 </template>
 
@@ -23,13 +23,33 @@
     computed: {
       ...mapState('operate', ['sidebarStatus'])
     },
+    watch: {
+      $route(res) {
+        this.initSidebar()
+      }
+    },
+    mounted() {
+      console.log('完成')
+      this.initSidebar()
+    },
     methods: {
+      initSidebar() {
+        console.log(this.sidebarStatus)
+
+        handleSidebar(this.sidebarStatus, () => {
+          if (!this.sidebarStatus) {
+            const navNode = document.querySelector('.header') as HTMLElement
+            navNode.style.maxWidth = '100%'
+          }
+        })
+      },
       /**
        * @description: 侧边栏控制
        */
-      handleSidebarStatus() {
-        handleSidebar(this.sidebarStatus, () => {
-          this.$store.commit('operate/handleSidebarStatus')
+      handleSidebarStatus(boolean: boolean) {
+        console.log(this.sidebarStatus)
+        handleSidebar(boolean, () => {
+          this.$store.commit('operate/handleSidebarStatus', boolean)
           if (!this.sidebarStatus) {
             const navNode = document.querySelector('.header') as HTMLElement
             navNode.style.maxWidth = '100%'

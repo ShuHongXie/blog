@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-20 17:23:24
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-03 17:20:47
+ * @LastEditTime: 2021-06-04 17:42:25
  * @FilePath: /nuxt-blog/components/Sidebar.vue
 -->
 <template>
@@ -51,10 +51,8 @@
           </div>
           <div v-else key="2" class="catalog">
             <span class="catalog__title">Catalog</span>
-            <div class="catalog__progress">
-              You've read {{ writePercent }}%
-              <div></div>
-            </div>
+            <div class="catalog__progress">You've read {{ writePercent }}%</div>
+            <Navbar class-name="article-menu" :source="''" :heading-top-offset="0" />
           </div>
         </transition-group>
         <div v-else class="user">
@@ -107,7 +105,7 @@
   import Vue from 'vue'
   import { mapState } from 'vuex'
   import config from '@/config'
-  import Gitalk from 'gitalk'
+  import { str } from '../str'
   export default Vue.extend({
     data() {
       return {
@@ -119,7 +117,8 @@
         toggleText: 'Toggle article',
         writePercent: 0,
         localto: '',
-        config
+        config,
+        str
       }
     },
     computed: {

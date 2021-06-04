@@ -61,6 +61,9 @@ export const routerOptions = {
     path: "/",
     component: _6fa09e32,
     name: "index"
+  }, {
+    path: "/page/:pageNum",
+    component: _6fa09e32
   }],
 
   fallback: false

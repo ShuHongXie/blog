@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-21 17:21:21
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-03 17:14:04
+ * @LastEditTime: 2021-06-04 15:56:15
  * @FilePath: /nuxt-blog/store/common.ts
  */
 import { GetterTree, ActionTree, MutationTree } from 'vuex'
@@ -39,7 +39,6 @@ export const mutations: MutationTree<RootState> = {
   },
   saveIsArticlePage(state, boolean) {
     console.log(boolean)
-
     state.isArticlePage = boolean
   }
 }

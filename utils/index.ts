@@ -3,7 +3,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-24 10:41:44
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-03 10:30:55
+ * @LastEditTime: 2021-06-04 15:42:26
  * @FilePath: /nuxt-blog/utils/index.ts
  */
 
@@ -16,7 +16,7 @@
 export function handleSidebar(sidebarStatus: boolean, func: () => any): void {
   const bodyWidth: number = document.body.clientWidth
   const navNode = document.querySelector('.header') as HTMLElement
-  if (!sidebarStatus) {
+  if (sidebarStatus) {
     document.body.style.paddingLeft = '300px'
     navNode.style.width = bodyWidth - 300 + 'px'
   } else {

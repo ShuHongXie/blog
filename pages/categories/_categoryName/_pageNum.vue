@@ -2,7 +2,7 @@
  * @Author: 谢树宏
  * @Date: 2021-06-02 11:14:25
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-03 17:01:37
+ * @LastEditTime: 2021-06-04 14:42:09
  * @FilePath: /nuxt-blog/pages/categories/_categoryName/_pageNum.vue
 -->
 <template>
@@ -21,8 +21,9 @@
 </template>
 
 <script lang="ts">
+  import Vue from 'vue'
   import config from '@/config'
-  export default {
+  export default Vue.extend({
     async asyncData({ params, error, $axios }) {
       try {
         const { categoryName, pageNum } = params
@@ -53,7 +54,7 @@
     },
     mounted() {},
     methods: {}
-  }
+  })
 </script>
 
 <style lang="scss" scoped>

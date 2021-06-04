@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-24 10:03:35
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-03 15:33:30
+ * @LastEditTime: 2021-06-04 15:56:40
  * @FilePath: /nuxt-blog/components/Footer.vue
 -->
 <template>
@@ -29,11 +29,6 @@
     computed: {
       ...mapState('operate', ['sidebarStatus']),
       ...mapState('common', ['pvCount', 'uvCount'])
-    },
-    methods: {
-      handleSidebarStatus() {
-        this.$store.commit('operate/handleSidebarStatus')
-      }
     }
   })
 </script>

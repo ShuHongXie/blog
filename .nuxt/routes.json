@@ -52,5 +52,9 @@
     "path": "/",
     "component": "/Users/xiexiaoxie/my/nuxt-blog/pages/index.vue",
     "chunkName": "pages/index"
+  },
+  {
+    "path": "/page/:pageNum",
+    "component": "/Users/xiexiaoxie/my/nuxt-blog/pages/index.vue"
   }
 ]

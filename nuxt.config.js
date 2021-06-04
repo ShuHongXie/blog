@@ -1,13 +1,21 @@
 /*
  * @Author: shuhongxie
  * @Date: 2021-05-20 10:33:24
- * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-26 10:15:26
+ * @LastEditors: 谢树宏
+ * @LastEditTime: 2021-06-04 11:45:59
  * @FilePath: /nuxt-blog/nuxt.config.js
  */
 export default {
   env: {
     ENV: process.env.ENV
+  },
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        path: '/page/:pageNum',
+        component: resolve(__dirname, 'pages/index.vue')
+      })
+    }
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {

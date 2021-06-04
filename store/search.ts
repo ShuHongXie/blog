@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-21 17:21:21
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-03 14:38:06
+ * @LastEditTime: 2021-06-04 14:28:27
  * @FilePath: /nuxt-blog/store/search.ts
  */
 import config from '@/config'
@@ -20,7 +20,7 @@ export const mutations: MutationTree<RootState> = {
 }
 
 export const actions: ActionTree<RootState, RootState> = {
-  async getSearchList({ commit }, { key, pageNum }) {
+  async getSearchList({ commit, rootState }, { key, pageNum }) {
     const res = await this.$axios.$post(
       `${config.domain}/search`,
       { key, pageNum },
