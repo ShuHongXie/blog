@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-20 10:33:24
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-03 16:58:33
+ * @LastEditTime: 2021-06-09 16:28:30
  * @FilePath: /nuxt-blog/pages/article/_link.vue
 -->
 <template>
@@ -34,15 +34,12 @@
     <div class="article__content article__other">
       <nuxt-link
         v-for="(item, index) in data.brothers"
-        v-if="data.brothers[index]"
         :key="index"
-        :to="`/article/${item.link}`"
+        :class="[item ? '' : 'hide']"
+        :to="item ? `/article/${item.link}` : 'javascript:;'"
       >
-        <span>
-          {{ (item && item.title) || '' }}
-        </span>
+        <span>{{ (item && item.title) || '' }}</span>
       </nuxt-link>
-      <div v-else></div>
     </div>
     <div id="gitalk-container" class="article__content"></div>
   </div>
@@ -53,10 +50,12 @@
   import marked from 'marked'
   import hljs from 'highlight.js'
   import Gitalk from 'gitalk'
+  import xss from 'xss'
   // import fancyBox from 'vue-fancybox'
   import { mapMutations } from 'vuex'
   import { initCopyBtn } from '@/utils'
   import config from '@/config'
+  import lazy from '@/utils/lazy'
   import { str } from '../../str'
   marked.setOptions({
     highlight: (code: string) => hljs.highlightAuto(code).value,
@@ -75,6 +74,7 @@
     url: string
   }
   export default Vue.extend({
+    mixins: [lazy],
     transition: 'fat-tran',
     async asyncData({ $axios, params }) {
       const { link } = params
@@ -86,7 +86,13 @@
       }
     },
     data() {
-      return { str, imagePreview: [] as imagePreviewObject[], config, marked }
+      return {
+        str,
+        imagePreview: [] as imagePreviewObject[],
+        config,
+        marked: (text: string) => marked(text),
+        bannerHeight: 0
+      }
     },
     head() {
       return {
@@ -95,14 +101,16 @@
     },
     computed: {
       ohterArticle() {
-        console.log(this.$data.data)
-
         const ohterArticle = [false, false]
-        // return this.data && this.data.brothers.forE
-        return ''
+        this.$data.data &&
+          this.$data.data.brothers.forEach((item: any, index: number) => {
+            ohterArticle[index] = true
+          })
+        return ohterArticle
       }
     },
     mounted() {
+      this.initLazy('.article')
       // 初始化复制按钮
       initCopyBtn()
       // highlight.js代码区初始化
@@ -122,24 +130,58 @@
         id: decodeURI(location.pathname), // Ensure uniqueness and length less than 50
         distractionFreeMode: false // Facebook-like distraction free mode
       })
-
+      // 评论区渲染
       gitalk.render('gitalk-container')
-      console.log(this)
-
+      // 信息保存 为侧边栏导航和其他组件提供数据
       this.saveArticleInfo(this.$data.data)
+      // banner高度
+      this.bannerHeight = document.querySelector('.banner')?.clientHeight || 0
+      document.addEventListener('scroll', () => {
+        this.saveArticleReadPercent(
+          parseInt(
+            (
+              (document.documentElement.scrollTop /
+                (document.body.scrollHeight - this.client().height)) *
+              100
+            ).toFixed(2)
+          )
+        )
+      })
+    },
+    beforeDestroy() {
+      document.removeEventListener('scroll', () => {})
     },
     methods: {
       ...mapMutations({
-        saveArticleInfo: 'article/saveArticleInfo'
+        saveArticleInfo: 'article/saveArticleInfo',
+        saveArticleReadPercent: 'common/saveArticleReadPercent'
       }),
+      client() {
+        if (window.innerHeight !== undefined) {
+          return {
+            width: window.innerWidth,
+            height: window.innerHeight
+          }
+        } else if (document.compatMode === 'CSS1Compat') {
+          return {
+            width: document.documentElement.clientWidth,
+            height: document.documentElement.clientHeight
+          }
+        } else {
+          return {
+            width: document.body.clientWidth,
+            height: document.body.clientHeight
+          }
+        }
+      },
       initFancyBox() {
         const imageList = document.querySelectorAll('.article__content img') as NodeList
         imageList.forEach(image => {
-          this.imagePreview.push({
-            width: (image as HTMLImageElement).naturalWidth,
-            height: (image as HTMLImageElement).naturalHeight,
-            url: (image as HTMLImageElement).currentSrc
-          })
+          // this.imagePreview.push({
+          //   width: (image as HTMLImageElement).naturalWidth,
+          //   height: (image as HTMLImageElement).naturalHeight,
+          //   url: (image as HTMLImageElement).currentSrc
+          // })
         })
         for (let i = 0; i < imageList.length; i++) {
           imageList[i].addEventListener('click', e => {
@@ -253,6 +295,10 @@
           &::after {
             color: $other_color !important;
           }
+        }
+        &.hide {
+          opacity: 0;
+          z-index: -1;
         }
         &:first-child {
           &::before {
@@ -376,6 +422,8 @@
 
   pre {
     border: 1px solid #ccc;
+    overflow: hidden;
+    border-radius: 10px;
   }
 
   blockquote {

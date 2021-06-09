@@ -22,4 +22,3 @@ You can directly use them in pages and other components without the need to impo
 - `<SidebarControl>` | `<sidebar-control>` (components/SidebarControl.vue)
 - `<Snow>` | `<snow>` (components/Snow.vue)
 - `<ToTop>` | `<to-top>` (components/ToTop.vue)
-- `<Test>` | `<test>` (components/test.tsx)

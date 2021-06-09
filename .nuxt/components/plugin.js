@@ -17,8 +17,7 @@ const components = {
   Sidebar: () => import('../../components/Sidebar.vue' /* webpackChunkName: "components/sidebar" */).then(c => wrapFunctional(c.default || c)),
   SidebarControl: () => import('../../components/SidebarControl.vue' /* webpackChunkName: "components/sidebar-control" */).then(c => wrapFunctional(c.default || c)),
   Snow: () => import('../../components/Snow.vue' /* webpackChunkName: "components/snow" */).then(c => wrapFunctional(c.default || c)),
-  ToTop: () => import('../../components/ToTop.vue' /* webpackChunkName: "components/to-top" */).then(c => wrapFunctional(c.default || c)),
-  Test: () => import('../../components/test.tsx' /* webpackChunkName: "components/test" */).then(c => wrapFunctional(c.default || c))
+  ToTop: () => import('../../components/ToTop.vue' /* webpackChunkName: "components/to-top" */).then(c => wrapFunctional(c.default || c))
 }
 
 for (const name in components) {

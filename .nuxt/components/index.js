@@ -16,7 +16,6 @@ export { default as Sidebar } from '../../components/Sidebar.vue'
 export { default as SidebarControl } from '../../components/SidebarControl.vue'
 export { default as Snow } from '../../components/Snow.vue'
 export { default as ToTop } from '../../components/ToTop.vue'
-export { default as Test } from '../../components/test.tsx'
 
 export const LazyCategoryItem = import('../../components/CategoryItem.vue' /* webpackChunkName: "components/category-item" */).then(c => wrapFunctional(c.default || c))
 export const LazyFooter = import('../../components/Footer.vue' /* webpackChunkName: "components/footer" */).then(c => wrapFunctional(c.default || c))
@@ -34,4 +33,3 @@ export const LazySidebar = import('../../components/Sidebar.vue' /* webpackChunk
 export const LazySidebarControl = import('../../components/SidebarControl.vue' /* webpackChunkName: "components/sidebar-control" */).then(c => wrapFunctional(c.default || c))
 export const LazySnow = import('../../components/Snow.vue' /* webpackChunkName: "components/snow" */).then(c => wrapFunctional(c.default || c))
 export const LazyToTop = import('../../components/ToTop.vue' /* webpackChunkName: "components/to-top" */).then(c => wrapFunctional(c.default || c))
-export const LazyTest = import('../../components/test.tsx' /* webpackChunkName: "components/test" */).then(c => wrapFunctional(c.default || c))

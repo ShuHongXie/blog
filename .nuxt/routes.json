@@ -3,58 +3,68 @@
     "name": "about",
     "path": "/about",
     "component": "/Users/xiexiaoxie/my/nuxt-blog/pages/about.vue",
-    "chunkName": "pages/about"
+    "chunkName": "pages/about",
+    "_name": "_af1053bc"
   },
   {
     "name": "categories",
     "path": "/categories",
     "component": "/Users/xiexiaoxie/my/nuxt-blog/pages/categories/index.vue",
-    "chunkName": "pages/categories/index"
+    "chunkName": "pages/categories/index",
+    "_name": "_84eaa8cc"
   },
   {
     "name": "tag",
     "path": "/tag",
     "component": "/Users/xiexiaoxie/my/nuxt-blog/pages/tag/index.vue",
-    "chunkName": "pages/tag/index"
+    "chunkName": "pages/tag/index",
+    "_name": "_5e487632"
   },
   {
     "name": "archives-pageNum",
     "path": "/archives/:pageNum?",
     "component": "/Users/xiexiaoxie/my/nuxt-blog/pages/archives/_pageNum.vue",
-    "chunkName": "pages/archives/_pageNum"
+    "chunkName": "pages/archives/_pageNum",
+    "_name": "_6b3f17aa"
   },
   {
     "name": "article-link",
     "path": "/article/:link?",
     "component": "/Users/xiexiaoxie/my/nuxt-blog/pages/article/_link.vue",
-    "chunkName": "pages/article/_link"
+    "chunkName": "pages/article/_link",
+    "_name": "_e02bc2d6"
   },
   {
     "name": "user-id",
     "path": "/user/:id",
     "component": "/Users/xiexiaoxie/my/nuxt-blog/pages/user/_id/index.vue",
-    "chunkName": "pages/user/_id/index"
+    "chunkName": "pages/user/_id/index",
+    "_name": "_64895734"
   },
   {
     "name": "categories-categoryName-pageNum",
     "path": "/categories/:categoryName/:pageNum?",
     "component": "/Users/xiexiaoxie/my/nuxt-blog/pages/categories/_categoryName/_pageNum.vue",
-    "chunkName": "pages/categories/_categoryName/_pageNum"
+    "chunkName": "pages/categories/_categoryName/_pageNum",
+    "_name": "_3ff79672"
   },
   {
     "name": "tag-tagName-pageNum",
     "path": "/tag/:tagName/:pageNum?",
     "component": "/Users/xiexiaoxie/my/nuxt-blog/pages/tag/_tagName/_pageNum.vue",
-    "chunkName": "pages/tag/_tagName/_pageNum"
+    "chunkName": "pages/tag/_tagName/_pageNum",
+    "_name": "_78e06b01"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/xiexiaoxie/my/nuxt-blog/pages/index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_6fa09e32"
   },
   {
     "path": "/page/:pageNum",
-    "component": "/Users/xiexiaoxie/my/nuxt-blog/pages/index.vue"
+    "component": "/Users/xiexiaoxie/my/nuxt-blog/pages/index.vue",
+    "_name": "_6fa09e32"
   }
 ]

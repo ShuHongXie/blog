@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-20 10:33:24
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-04 11:45:59
+ * @LastEditTime: 2021-06-09 16:12:00
  * @FilePath: /nuxt-blog/nuxt.config.js
  */
 export default {
@@ -22,7 +22,6 @@ export default {
     title: 'My Dream is to be a music producer',
     meta: [
       { charset: 'utf-8' },
-      { charset: 'utf-8' },
       { name: 'apple-mobile-web-app-capable', content: 'yes' },
       { name: 'apple-mobile-web-app-status-bar-style', content: 'black' },
       { name: 'format-detection', content: 'telephone=no' },
@@ -32,6 +31,15 @@ export default {
         name: 'viewport',
         content:
           'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover'
+      },
+      {
+        name: 'keywords',
+        coentent: '谢小谢のBlog, 前端开发, Vue相关, JS原理, 谢小谢, 谢小谢的博客, 前端, docker分享'
+      },
+      {
+        name: 'description',
+        content:
+          '属于我谢小谢的博客，我会在里面分享前端开发，后台，服务器的相关知识，还会分享html,css,js,vue,webpack等原理文章等。'
       }
     ],
     link: [
@@ -40,7 +48,8 @@ export default {
         rel: 'stylesheet',
         href: '//at.alicdn.com/t/font_1096478_kp3hdrsolo.css'
       }
-    ]
+    ],
+    script: [{ src: '//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js' }]
   },
   loading: { color: '#3B8070' },
 

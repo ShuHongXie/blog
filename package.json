@@ -30,7 +30,8 @@
     "lodash.throttle": "^4.1.1",
     "marked": "^2.0.5",
     "nuxt": "^2.15.3",
-    "vue-fancybox": "^1.0.3"
+    "vue-fancybox": "^1.0.3",
+    "xss": "^1.0.9"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.3",

@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-21 17:21:21
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-04 15:56:15
+ * @LastEditTime: 2021-06-07 11:56:43
  * @FilePath: /nuxt-blog/store/common.ts
  */
 import { GetterTree, ActionTree, MutationTree } from 'vuex'
@@ -12,7 +12,8 @@ export const state = () => ({
   userInfo: null as any,
   pvCount: 0,
   uvCount: 0,
-  isArticlePage: false
+  isArticlePage: false,
+  articleReadPercent: 0 // 滚动幅度
 })
 
 export type RootState = ReturnType<typeof state>
@@ -37,8 +38,22 @@ export const mutations: MutationTree<RootState> = {
     state.pvCount = data.count
     state.uvCount = data.uvCount
   },
+  /**
+   * @description: 判断是不是当前页面
+   * @param {*} state
+   * @param {*} boolean
+   * @return {*}
+   */
   saveIsArticlePage(state, boolean) {
-    console.log(boolean)
     state.isArticlePage = boolean
+  },
+  /**
+   * @description: 保存当前滚动百分比幅度
+   * @param {*} state
+   * @param {*} percent
+   * @return {*}
+   */
+  saveArticleReadPercent(state, percent) {
+    state.articleReadPercent = percent
   }
 }

@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-24 19:45:50
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-02 19:42:54
+ * @LastEditTime: 2021-06-09 16:43:29
  * @FilePath: /nuxt-blog/components/Pagination.vue
 -->
 <template>
@@ -19,7 +19,7 @@
       {{ index + 1 }}
     </span>
     <span
-      v-if="currentPage !== Math.floor(total / pageSize) + 1 && total / pageSize !== 1"
+      v-if="currentPage * pageSize <= total - pageSize"
       class="pagination__next"
       @click="jump('next')"
     >
@@ -64,6 +64,8 @@
       }
     },
     mounted() {
+      console.log(this.currentPage, this.total, this.pageSize)
+
       this.init()
     },
     methods: {

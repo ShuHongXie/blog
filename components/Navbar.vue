@@ -2,16 +2,16 @@
  * @Author: 谢树宏
  * @Date: 2021-06-04 16:12:41
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-04 18:00:42
+ * @LastEditTime: 2021-06-07 13:51:55
  * @FilePath: /nuxt-blog/components/Navbar.vue
 -->
 <template>
-  <div class="markdown-navigation">
+  <div v-if="navStructure.length" ref="container" class="markdown-navigation">
     <div
-      v-for="t in getNavStructure()"
-      :key="`title_anchor_${Math.random().toString(36).substring(2)}`"
+      v-for="(t, index) in navStructure"
+      :key="index"
       :class="['title-anchor', `title-level${t.level}`, currentListNo === t.listNo ? 'active' : '']"
-      @click="evt => setEdit(evt, item)"
+      @click="evt => setEvt(evt, t)"
     >
       <small v-if="ordered">{{ t.listNo }}</small>
       {{ t.text }}
@@ -55,11 +55,34 @@
     data() {
       return {
         currentListNo: '',
-        navStructure: []
+        navStructure: [],
+        scrollEventLock: false
+      }
+    },
+    watch: {
+      source(n) {
+        if (n) {
+          this.refreshNav(n)
+          if (this.scrollEventLockTimer) {
+            clearTimeout(this.scrollEventLockTimer)
+          }
+          this.scrollEventLock = true
+
+          this.safeScrollTo(window, 0, 0)
+          // this.safeScrollTo(this.refs.container, 0, 0)
+          this.currentListNo = ''
+          const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6')
+          Array.prototype.slice.apply(headings).forEach(h => (h.dataset.id = ''))
+
+          this.scrollEventLockTimer = setTimeout(() => {
+            this.initHeadingsId()
+            this.scrollEventLock = false
+          }, 500)
+        }
       }
     },
     mounted() {
-      console.log(this.source)
+      this.winScroll = throttle(this.winScroll, 300)
       this.refreshNav(this.source)
     },
     beforeDestroy() {
@@ -137,65 +160,66 @@
         return arr.slice(start, end + 1)
       },
       getNavStructure(source) {
-        console.log(source)
-        // const contentWithoutCode = source
-        //   .replace(/^[^#]+\n/g, '')
-        //   .replace(/(?:[^\n#]+)#+\s([^#\n]+)\n*/g, '') // 匹配行内出现 # 号的情况
-        //   .replace(/^#\s[^#\n]*\n+/, '')
-        //   .replace(/```[^`\n]*\n+[^```]+```\n+/g, '')
-        //   .replace(/`([^`\n]+)`/g, '$1')
-        //   .replace(/\*\*?([^*\n]+)\*\*?/g, '$1')
-        //   .replace(/__?([^_\n]+)__?/g, '$1')
-        //   .trim()
+        if (!source) return []
+        const contentWithoutCode = source
+          .replace(/^[^#]+\n/g, '')
+          .replace(/(?:[^\n#]+)#+\s([^#\n]+)\n*/g, '') // 匹配行内出现 # 号的情况
+          .replace(/^#\s[^#\n]*\n+/, '')
+          .replace(/```[^`\n]*\n+[^```]+```\n+/g, '')
+          .replace(/`([^`\n]+)`/g, '$1')
+          .replace(/\*\*?([^*\n]+)\*\*?/g, '$1')
+          .replace(/__?([^_\n]+)__?/g, '$1')
+          .trim()
 
-        // const pattOfTitle = /#+\s([^#\n]+)\n*/g
-        // const matchResult = contentWithoutCode.match(pattOfTitle)
+        const pattOfTitle = /#+\s([^#\n]+)\n*/g
+        const matchResult = contentWithoutCode.match(pattOfTitle)
 
-        // if (!matchResult) {
-        //   return []
-        // }
+        if (!matchResult) {
+          return []
+        }
 
-        // const navData = matchResult.map((r, i) => ({
-        //   index: i,
-        //   level: r.match(/^#+/g)[0].length,
-        //   text: r.replace(pattOfTitle, '$1')
-        // }))
+        const navData = matchResult.map((r, i) => ({
+          index: i,
+          level: r.match(/^#+/g)[0].length,
+          text: r.replace(pattOfTitle, '$1')
+        }))
 
-        // let maxLevel = 0
-        // navData.forEach(t => {
-        //   if (t.level > maxLevel) {
-        //     maxLevel = t.level
-        //   }
-        // })
-        // const matchStack = []
-        // // 此部分重构，原有方法会出现次级标题后再次出现高级标题时，listNo重复的bug
-        // for (let i = 0; i < navData.length; i++) {
-        //   const t = navData[i]
-        //   const { level } = t
-        //   while (matchStack.length && matchStack[matchStack.length - 1].level > level) {
-        //     matchStack.pop()
-        //   }
-        //   if (matchStack.length === 0) {
-        //     const arr = new Array(maxLevel).fill(0)
-        //     arr[level - 1] += 1
-        //     matchStack.push({
-        //       level,
-        //       arr
-        //     })
-        //     t.listNo = this.trimArrZero(arr).join('.')
-        //     continue
-        //   }
-        //   const { arr } = matchStack[matchStack.length - 1]
-        //   const newArr = arr.slice()
-        //   newArr[level - 1] += 1
-        //   matchStack.push({
-        //     level,
-        //     arr: newArr
-        //   })
-        //   t.listNo = this.trimArrZero(newArr).join('.')
-        // }
-        // return navData
-        return []
+        let maxLevel = 0
+        navData.forEach(t => {
+          if (t.level > maxLevel) {
+            maxLevel = t.level
+          }
+        })
+        const matchStack = []
+        // 此部分重构，原有方法会出现次级标题后再次出现高级标题时，listNo重复的bug
+        for (let i = 0; i < navData.length; i++) {
+          const t = navData[i]
+          const { level } = t
+          while (matchStack.length && matchStack[matchStack.length - 1].level > level) {
+            matchStack.pop()
+          }
+          if (matchStack.length === 0) {
+            const arr = new Array(maxLevel).fill(0)
+            arr[level - 1] += 1
+            matchStack.push({
+              level,
+              arr
+            })
+            t.listNo = this.trimArrZero(arr).join('.')
+            continue
+          }
+          const { arr } = matchStack[matchStack.length - 1]
+          const newArr = arr.slice()
+          newArr[level - 1] += 1
+          matchStack.push({
+            level,
+            arr: newArr
+          })
+
+          t.listNo = this.trimArrZero(newArr).join('.')
+        }
+        return navData
+        // return []
       },
       scrollToTarget(dataId) {
         if (this.scrollTimeout) {
@@ -260,7 +284,7 @@
       getCurrentHashValue() {
         return decodeURIComponent(window.location.hash.replace(/^#/, ''))
       },
-      winScroll: throttle(() => {
+      winScroll() {
         if (this.scrollEventLock) return
 
         const scrollTop =
@@ -284,19 +308,19 @@
 
           this.updateHash(curHeading.dataId)
         }
-        if (currentNavElement) {
-          const { container } = this.refs
-          const { offsetTop } = currentNavElement
-          const { scrollTop: containerScrollTop, offsetHeight: containerOffsetHeight } = container
-          const min = containerScrollTop + 0.3 * containerOffsetHeight
-          const max = containerScrollTop + 0.7 * containerOffsetHeight
-          if (offsetTop < min || offsetTop > max) {
-            const targetTop = offsetTop - 0.2 * containerOffsetHeight
-            this.safeScrollTo(container, targetTop, 0, true)
-          }
-        }
+        // if (currentNavElement) {
+        //   const { container } = this.refs
+        //   const { offsetTop } = currentNavElement
+        //   const { scrollTop: containerScrollTop, offsetHeight: containerOffsetHeight } = container
+        //   const min = containerScrollTop + 0.3 * containerOffsetHeight
+        //   const max = containerScrollTop + 0.7 * containerOffsetHeight
+        //   if (offsetTop < min || offsetTop > max) {
+        //     const targetTop = offsetTop - 0.2 * containerOffsetHeight
+        //     this.safeScrollTo(container, targetTop, 0, true)
+        //   }
+        // }
         this.currentListNo = curHeading.listNo
-      }, 300),
+      },
       winHashChange() {
         this.scrollToTarget(this.navStructure)
       },
@@ -317,81 +341,72 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+  @import '~/assets/common/common.scss';
   .markdown-navigation {
     font-size: 14px;
     font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Helvetica', 'Arial',
       'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif;
     width: 100%;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    scrollbar-width: 0;
-    width: 200px;
+    margin-left: 10px;
+    overflow-y: auto;
+    max-height: 600px;
   }
-  .markdown-navigation::-webkit-scrollbar {
-    width: 0;
-  }
-
   .markdown-navigation .title-anchor {
     display: block;
-    color: #bbb;
+    color: #99a9bf;
     transition: all 0.2s;
-    margin: 0.8em 0;
+    text-align: left;
+    font-size: 16px;
+    // margin: 0.8em 0;
     font-weight: lighter;
     line-height: 2em;
-    padding-right: 1.8em;
-    cursor: pointer;
+    // padding-right: 1.8em;
+    padding: 0;
   }
 
   .markdown-navigation .title-anchor:hover,
   .markdown-navigation .title-anchor.active {
-    background-color: #f8f8f8;
+    background-color: #e4dde3;
     text-decoration: inherit;
+    border-right: 3px solid $other_color;
   }
 
   .markdown-navigation .title-anchor.active {
-    color: #007fff;
+    color: $other_color;
   }
 
   .markdown-navigation .title-anchor small {
-    margin: 0 0.8em;
+    margin-right: 2px;
   }
 
   .markdown-navigation .title-level1 {
-    color: #000;
     font-size: 1.2em;
-    padding-left: 1em;
-    font-weight: normal;
   }
 
   .markdown-navigation .title-level2 {
-    color: #333;
     font-size: 1em;
     padding-left: 1em;
     font-weight: normal;
   }
 
   .markdown-navigation .title-level3 {
-    color: #666;
     font-size: 0.8em;
     padding-left: 3em;
     font-weight: normal;
   }
 
   .markdown-navigation .title-level4 {
-    color: #999;
     font-size: 0.72em;
     padding-left: 5em;
   }
 
   .markdown-navigation .title-level5 {
-    color: #aaa;
     font-size: 0.72em;
     padding-left: 7em;
   }
 
   .markdown-navigation .title-level6 {
-    color: #bbb;
     font-size: 0.72em;
     padding-left: 9em;
   }

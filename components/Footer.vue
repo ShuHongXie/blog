@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-24 10:03:35
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-04 15:56:40
+ * @LastEditTime: 2021-06-09 15:53:18
  * @FilePath: /nuxt-blog/components/Footer.vue
 -->
 <template>
@@ -10,10 +10,10 @@
     <div class="footer__author">©2019 By 谢小谢</div>
     <div class="footer__uvpv">
       <i class="iconfont iconSeedling"></i>
-      <span>{{ pvCount }}</span>
+      <span id="busuanzi_value_site_pv"></span>
       |
       <i class="iconfont iconEnergy"></i>
-      <span>{{ uvCount }}</span>
+      <span id="busuanzi_value_site_uv"></span>
     </div>
     <a class="footer__code" href="http://beian.miit.gov.cn">粤ICP备19149086号</a>
   </footer>

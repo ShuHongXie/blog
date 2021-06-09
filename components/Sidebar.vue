@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-20 17:23:24
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-04 17:42:25
+ * @LastEditTime: 2021-06-08 10:55:08
  * @FilePath: /nuxt-blog/components/Sidebar.vue
 -->
 <template>
@@ -51,8 +51,13 @@
           </div>
           <div v-else key="2" class="catalog">
             <span class="catalog__title">Catalog</span>
-            <div class="catalog__progress">You've read {{ writePercent }}%</div>
-            <Navbar class-name="article-menu" :source="''" :heading-top-offset="0" />
+            <div class="catalog__progress">You've read {{ articleReadPercent }}%</div>
+            <Navbar
+              v-if="articleInfo"
+              class-name="article-menu"
+              :source="articleInfo.info.content"
+              :heading-top-offset="0"
+            />
           </div>
         </transition-group>
         <div v-else class="user">
@@ -106,6 +111,7 @@
   import { mapState } from 'vuex'
   import config from '@/config'
   import { str } from '../str'
+
   export default Vue.extend({
     data() {
       return {
@@ -123,7 +129,8 @@
     },
     computed: {
       ...mapState('operate', ['sidebarStatus']),
-      ...mapState('common', ['userInfo', 'isArticlePage'])
+      ...mapState('common', ['userInfo', 'isArticlePage', 'articleReadPercent']),
+      ...mapState('article', ['articleInfo'])
     },
     mounted() {},
     methods: {
@@ -148,6 +155,7 @@
     font-size: 14px;
     margin: 0 auto;
     cursor: pointer;
+    user-select: none;
     &:hover {
       background-color: $other_color;
     }
@@ -328,6 +336,12 @@
           }
         }
       }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    // 小于768时
+    .sidebar {
+      display: none;
     }
   }
 </style>

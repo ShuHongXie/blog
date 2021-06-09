@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-21 09:30:59
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-04 14:39:44
+ * @LastEditTime: 2021-06-07 11:30:02
  * @FilePath: /nuxt-blog/.eslintrc.js
  */
 module.exports = {
@@ -19,6 +19,7 @@ module.exports = {
   plugins: [],
   // add your custom rules here
   rules: {
+    'vue/no-v-html': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/no-empty-function': 'off',

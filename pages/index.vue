@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-20 10:33:24
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-04 14:20:19
+ * @LastEditTime: 2021-06-09 15:10:26
  * @FilePath: /nuxt-blog/pages/index.vue
 -->
 <template>
@@ -22,6 +22,7 @@
   import Vue from 'vue'
   // import fancyBox from 'vue-fancybox'
   import { initCopyBtn } from '@/utils'
+  import lazy from '@/utils/lazy'
   import config from '@/config'
   interface imagePreviewObject {
     width: number
@@ -30,6 +31,7 @@
   }
 
   export default Vue.extend({
+    mixins: [lazy],
     transition: 'fat-tran',
     async asyncData({ params, error, $axios, route }) {
       try {
@@ -53,6 +55,7 @@
       }
     },
     mounted() {
+      this.initLazy('.article')
       this.initFancyBox()
     },
     methods: {
