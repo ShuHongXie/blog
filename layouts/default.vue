@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-20 10:33:24
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-08 18:00:19
+ * @LastEditTime: 2021-06-10 11:26:15
  * @FilePath: /nuxt-blog/layouts/default.vue
 -->
 <template>
@@ -37,15 +37,6 @@
     middleware: 'common',
     data() {
       return {}
-    },
-    mounted() {
-      const _hmt = _hmt || []
-      ;(function () {
-        const hm = document.createElement('script')
-        hm.src = 'https://hm.baidu.com/hm.js?5cfdf30b48599cb93366aeaff50ae8c0'
-        const s = document.getElementsByTagName('script')[0] as Node
-        s.parentNode.insertBefore(hm, s)
-      })()
     }
   })
 </script>

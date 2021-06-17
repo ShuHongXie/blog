@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-20 10:33:24
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-09 15:10:26
+ * @LastEditTime: 2021-06-10 14:39:49
  * @FilePath: /nuxt-blog/pages/index.vue
 -->
 <template>
@@ -55,8 +55,10 @@
       }
     },
     mounted() {
-      this.initLazy('.article')
-      this.initFancyBox()
+      console.log(this)
+      initCopyBtn()
+      ;(this as any).initLazy('.article')
+      // this.initFancyBox()
     },
     methods: {
       change({ pageNum }: { pageNum: number }) {

@@ -9,6 +9,7 @@
     "build:test": "cross-env ENV=development nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
+    "pm2": "pm2 start ./ecosystem.config.js --interpreter babel-node --env production",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint": "npm run lint:js",
     "test": "jest"

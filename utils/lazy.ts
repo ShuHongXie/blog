@@ -2,17 +2,11 @@
  * @Author: 谢树宏
  * @Date: 2021-06-09 11:36:22
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-09 15:02:59
+ * @LastEditTime: 2021-06-10 11:44:30
  * @FilePath: /nuxt-blog/utils/lazy.ts
  */
-/*
- * @Author: shuhongxie
- * @Date: 2021-02-04 16:14:11
- * @LastEditors: shuhongxie
- * @LastEditTime: 2021-03-01 14:30:55
- * @FilePath: /fat-ui/src/utils/directive/index.ts
- */
 import Vue from 'vue'
+import { ComponentOptions } from 'vue/types/options'
 
 /**
  * @Description: 设置样式
@@ -31,7 +25,7 @@ function setStyle(el: Element, value: string) {
  * @param {HTMLElement} el DOM元素
  * @param {DirectiveBinding} binding
  */
-const lazy = {
+const lazy: ComponentOptions<Vue> = {
   methods: {
     initLazy(className: string) {
       const imgList = document.querySelectorAll(`${className} img`)

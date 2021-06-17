@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-20 17:23:24
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-08 10:55:08
+ * @LastEditTime: 2021-06-10 14:35:45
  * @FilePath: /nuxt-blog/components/Sidebar.vue
 -->
 <template>
@@ -110,7 +110,6 @@
   import Vue from 'vue'
   import { mapState } from 'vuex'
   import config from '@/config'
-  import { str } from '../str'
 
   export default Vue.extend({
     data() {
@@ -123,8 +122,7 @@
         toggleText: 'Toggle article',
         writePercent: 0,
         localto: '',
-        config,
-        str
+        config
       }
     },
     computed: {

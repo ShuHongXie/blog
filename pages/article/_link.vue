@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-20 10:33:24
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-09 16:28:30
+ * @LastEditTime: 2021-06-10 14:42:41
  * @FilePath: /nuxt-blog/pages/article/_link.vue
 -->
 <template>
@@ -56,7 +56,6 @@
   import { initCopyBtn } from '@/utils'
   import config from '@/config'
   import lazy from '@/utils/lazy'
-  import { str } from '../../str'
   marked.setOptions({
     highlight: (code: string) => hljs.highlightAuto(code).value,
     gfm: true,
@@ -87,7 +86,6 @@
     },
     data() {
       return {
-        str,
         imagePreview: [] as imagePreviewObject[],
         config,
         marked: (text: string) => marked(text),
@@ -110,7 +108,7 @@
       }
     },
     mounted() {
-      this.initLazy('.article')
+      ;(this as any).initLazy('.article')
       // 初始化复制按钮
       initCopyBtn()
       // highlight.js代码区初始化
@@ -119,7 +117,7 @@
         hljs.highlightBlock(block as HTMLElement)
       })
       //
-      this.initFancyBox()
+      // this.initFancyBox()
       // 初始化评论区
       const gitalk = new Gitalk({
         clientID: config.clientId,
@@ -133,11 +131,11 @@
       // 评论区渲染
       gitalk.render('gitalk-container')
       // 信息保存 为侧边栏导航和其他组件提供数据
-      this.saveArticleInfo(this.$data.data)
+      ;(this as any).saveArticleInfo(this.$data.data)
       // banner高度
-      this.bannerHeight = document.querySelector('.banner')?.clientHeight || 0
+      // this.bannerHeight = document.querySelector('.banner')?.clientHeight || 0
       document.addEventListener('scroll', () => {
-        this.saveArticleReadPercent(
+        ;(this as any).saveArticleReadPercent(
           parseInt(
             (
               (document.documentElement.scrollTop /
@@ -192,7 +190,7 @@
     },
     // eslint-disable-next-line vue/order-in-components
     beforeRouteLeave(to, from, next) {
-      this.saveArticleInfo(null)
+      ;(this as any).saveArticleInfo(null)
       next()
     }
   })
