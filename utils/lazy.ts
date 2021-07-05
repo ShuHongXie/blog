@@ -2,7 +2,7 @@
  * @Author: 谢树宏
  * @Date: 2021-06-09 11:36:22
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-10 11:44:30
+ * @LastEditTime: 2021-07-05 14:56:47
  * @FilePath: /nuxt-blog/utils/lazy.ts
  */
 import Vue from 'vue'
@@ -31,7 +31,7 @@ const lazy: ComponentOptions<Vue> = {
       const imgList = document.querySelectorAll(`${className} img`)
       console.log(imgList)
       // 默认图片
-      const beforeHandImage = 'http://www.ay1.cc/img?w=300&h=300'
+      const beforeHandImage = 'https://via.placeholder.com/300'
       // 屏幕高度
       const contentHeight = document.body.clientHeight
       // 图片原始值

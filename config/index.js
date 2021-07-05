@@ -1,8 +1,8 @@
 /*
  * @Author: shuhongxie
  * @Date: 2021-05-25 15:16:38
- * @LastEditors: shuhongxie
- * @LastEditTime: 2021-05-25 17:06:59
+ * @LastEditors: 谢树宏
+ * @LastEditTime: 2021-07-05 13:41:29
  * @FilePath: /nuxt-blog/config/index.js
  */
 
@@ -10,11 +10,11 @@ const env = process.env.ENV
 
 const domain = {
   development: 'http://127.0.0.1:7001',
-  production: 'http://81.69.40.34:7001'
+  production: 'https://xiesmallxie.cn/blogApi'
 }
 const localIp = {
   development: 'http://127.0.0.1:3000',
-  production: 'http://81.69.40.34:3000'
+  production: 'https://xiesmallxie.cn'
 }
 const clientId = {
   development: 'f07bea6150a039aacefb',

@@ -2,7 +2,7 @@
  * @Author: shuhongxie
  * @Date: 2021-05-20 17:23:24
  * @LastEditors: 谢树宏
- * @LastEditTime: 2021-06-10 14:35:45
+ * @LastEditTime: 2021-07-01 16:16:04
  * @FilePath: /nuxt-blog/components/Sidebar.vue
 -->
 <template>
@@ -25,9 +25,7 @@
             </div>
             <p class="user__name">{{ userInfo.info.name }}</p>
             <p class="user__title">{{ userInfo.info.title }}</p>
-            <nuxt-link tag="div" :to="userInfo.info.follow" class="user__follow">
-              Follow Me
-            </nuxt-link>
+            <a :href="userInfo.info.follow" class="user__follow">Follow Me</a>
             <Scissors :style="scissorsStyle" />
             <div class="user__item">
               <nuxt-link class="user__item--link" tag="div" to="/archives/1">
@@ -46,7 +44,7 @@
             <Scissors :style="scissorsStyle" />
             <p class="user__links">Links</p>
             <div class="user__otherlinks">
-              <nuxt-link :to="userInfo.info.follow">ShuHongXie</nuxt-link>
+              <a :href="userInfo.info.follow">ShuHongXie</a>
             </div>
           </div>
           <div v-else key="2" class="catalog">
@@ -69,7 +67,7 @@
           </div>
           <p class="user__name">{{ userInfo.info.name }}</p>
           <p class="user__title">{{ userInfo.info.title }}</p>
-          <nuxt-link tag="div" :to="userInfo.info.follow" class="user__follow">Follow Me</nuxt-link>
+          <a :href="userInfo.info.follow" class="user__follow">Follow Me</a>
           <Scissors :style="scissorsStyle" />
           <div class="user__item">
             <nuxt-link class="user__item--link" tag="div" to="/archives/1">
@@ -88,7 +86,7 @@
           <Scissors :style="scissorsStyle" />
           <p class="user__links">Links</p>
           <div class="user__otherlinks">
-            <nuxt-link :to="userInfo.info.follow">ShuHongXie</nuxt-link>
+            <a :href="userInfo.info.follow">ShuHongXie</a>
           </div>
         </div>
       </div>
@@ -182,6 +180,7 @@
         position: absolute;
         width: 280px;
         &__follow {
+          display: block;
           @extend .button--toggle;
         }
         &__avatar {
